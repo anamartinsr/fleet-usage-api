@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { makeAutomovelController } from "../../http/factories/automovel.factory";
+import { makeAutomovelController } from "../../../application/factories/automovel.factory";
 
 const router = Router();
 const controller = makeAutomovelController();
