@@ -1,22 +1,34 @@
 import { Request, Response } from "express";
+import {
+  AutomovelData,
+  AutomovelFilters,
+  Automovel
+} from "../../infrastructure/database/memory/automovel.repository";
 
 export class AutomovelController {
-  constructor(private readonly createUseCase,
-              private readonly updateUseCase,
-              private readonly deleteUseCase,
-              private readonly getByIdUseCase,
-              private readonly listUseCase) {}
+  constructor(
+    private readonly createUseCase: { execute(data: AutomovelData): Promise<Automovel> },
+    private readonly updateUseCase: { execute(data: { id: string } & AutomovelData): Promise<Automovel> },
+    private readonly deleteUseCase: { execute(id: string): Promise<void> },
+    private readonly getByIdUseCase: { execute(id: string): Promise<Automovel | null> },
+    private readonly listUseCase: { execute(filters: AutomovelFilters): Promise<Automovel[]> }
+  ) {}
 
   async create(req: Request, res: Response) {
-    const result = await this.createUseCase.execute(req.body);
+    const body = req.body as AutomovelData;
+
+    const result = await this.createUseCase.execute(body);
     return res.status(201).json(result);
   }
 
   async update(req: Request, res: Response) {
+    const body = req.body as AutomovelData;
+
     const result = await this.updateUseCase.execute({
       id: req.params.id,
-      ...req.body,
+      ...body,
     });
+
     return res.json(result);
   }
 
@@ -31,10 +43,11 @@ export class AutomovelController {
   }
 
   async list(req: Request, res: Response) {
-    const filters = {
+    const filters: AutomovelFilters = {
       color: req.query.color as string,
       brand: req.query.brand as string,
     };
+
     const result = await this.listUseCase.execute(filters);
     return res.json(result);
   }
