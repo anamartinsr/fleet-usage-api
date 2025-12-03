@@ -2,9 +2,9 @@
   "name": "fleet-usage-api",
   "version": "1.0.0",
   "description": "API desenvolvida para gerenciar automóveis, motoristas e registros de utilização de veículos dentro de uma frota.\r O sistema permite cadastrar e controlar veículos, motoristas e o uso de cada automóvel, garantindo que apenas um motorista utilize um carro por vez.",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "jest"
   },
   "keywords": [],
@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.10.1",
