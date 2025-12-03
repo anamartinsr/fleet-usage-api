@@ -1,7 +1,7 @@
 export class CreateAutomovelUseCase {
-  constructor(private readonly repo) {}
+  constructor(private readonly repo: any) {}
 
-  async execute(data) {
+  async execute(data: { plate: string; color: string; brand: string }) {
     return this.repo.create({
       plate: data.plate,
       color: data.color,
