@@ -51,4 +51,48 @@ Listar todas as utilizações com
 * Node.js
 * Express.js
 * TypeScript
-* Jest + Supertest (para testes unitários)
+* Jest 
+* Clean Architecture
+
+## Como baixar e rodar o projeto 
+1. Clonar o repositório
+
+```
+git clone https://github.com/anamartinsr/fleet-usage-api
+```
+
+2. Entrar na pasta
+
+```
+cd fleet-usage-api
+```
+3. Instalar dependências
+* É necessário ter Node.js instalado.
+Depois, rode:
+```
+npm install
+```
+
+4. Crie um arquivo .env na raiz do projeto, seguindo o arquivo .env.example como guia
+
+Servidor iniciará normalmente (geralmente em http://localhost:3000).
+
+5. Rodar o servidor
+
+```
+npm run dev
+```
+
+6. Rodar os testes
+
+```
+npm run test
+```
+
+Os testes cobrem:
+* Repositórios (in-memory)
+* Use cases
+* Regras de negócio
+* Validações de disponibilidade
+
+
