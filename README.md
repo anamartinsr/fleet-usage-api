@@ -75,8 +75,6 @@ npm install
 
 4. Crie um arquivo .env na raiz do projeto, seguindo o arquivo .env.example como guia
 
-Servidor iniciará normalmente (geralmente em http://localhost:3000).
-
 5. Rodar o servidor
 
 ```
